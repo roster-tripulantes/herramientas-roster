@@ -26,6 +26,10 @@ que piden la clave de acceso del equipo y descifran la herramienta en el navegad
    - el pie lleva el botón "Olvidar la clave en este navegador" (`window.__roster.olvidar()`).
 3. `python3 _build/cifrar.py <carpeta_origen> .` y luego commit + push a `main`. Pages publica en 1–2 minutos.
 4. Nunca subas archivos en claro (HTML de herramientas, PDF, plantas o reportes) a este repositorio: es público.
+5. Plan B: después de cada actualización regenera el kit de respaldo sin clave con
+   `python3 _build/kit_respaldo.py <carpeta_origen> <ruta_fuera_del_repo>/Herramientas_Roster_respaldo_AAAAMMDD.zip AAAA-MM-DD`
+   (la carpeta de origen lleva el `index.html` del portal tal cual está en claude.ai, sin los dos ajustes del paso 2)
+   y entrégaselo al responsable para que reemplace la copia en la carpeta interna del equipo. El kit NUNCA se sube aquí.
 
 ## Cambiar la clave de acceso
 
