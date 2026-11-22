@@ -37,9 +37,15 @@ def sobre(pub, datos, gz):
 
 
 def inyectar_shim(doc):
-    i = doc.find('<body>')
+    # El shim debe ir en la cabecera real. Usar <body> fallaba porque algunas
+    # librerias (SheetJS) traen la cadena '<body>' dentro de su codigo, y el shim
+    # quedaba inyectado en medio del <script> de la libreria, rompiendo la pagina.
+    i = doc.find('<head>')
     if i >= 0:
         return doc[:i + 6] + SHIM + doc[i + 6:]
+    j = doc.find('<body>')
+    if j >= 0:
+        return doc[:j + 6] + SHIM + doc[j + 6:]
     return SHIM + doc
 
 
